@@ -1,0 +1,1 @@
+ALTER TABLE placements ADD COLUMN manual_honorar numeric NULL;

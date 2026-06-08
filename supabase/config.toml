@@ -1,0 +1,142 @@
+project_id = "bwjnfbpczevbhhjmsosq"
+
+[functions.verify-invitation]
+verify_jwt = false
+
+[functions.parse-cv]
+verify_jwt = false
+
+[functions.parse-job-posting]
+verify_jwt = false
+
+[functions.parse-company-website]
+verify_jwt = false
+
+[functions.analytics-ai]
+verify_jwt = false
+
+[functions.ai-candidate-search]
+verify_jwt = false
+
+[functions.ai-job-search]
+verify_jwt = false
+
+[functions.generate-cv]
+verify_jwt = false
+
+[functions.generate-expose]
+verify_jwt = false
+
+[functions.analyze-pdf-template]
+verify_jwt = false
+
+[functions.ai-match-candidates]
+verify_jwt = false
+
+[functions.analyze-match]
+verify_jwt = false
+
+[functions.analyze-placement-probability]
+verify_jwt = false
+
+[functions.calculate-commute]
+verify_jwt = false
+
+[functions.notify-access-denied]
+verify_jwt = false
+
+[functions.generate-interview-prep]
+verify_jwt = false
+
+[functions.places-autocomplete]
+verify_jwt = false
+
+[functions.process-candidate-info]
+verify_jwt = false
+
+[functions.structure-cv-with-gemini]
+verify_jwt = false
+
+[functions.generate-candidate-summary]
+verify_jwt = false
+
+[functions.validate-job-urls]
+verify_jwt = false
+
+[functions.check-url-validity]
+verify_jwt = false
+
+[functions.fix-job-formatting]
+verify_jwt = false
+
+[functions.batch-enrich-jobs]
+verify_jwt = false
+
+[functions.generate-company-description]
+verify_jwt = false
+
+[functions.enhance-image]
+verify_jwt = false
+
+[functions.fetch-company-logo]
+verify_jwt = false
+
+[functions.parse-job-pdf]
+verify_jwt = false
+
+[functions.batch-generate-descriptions]
+verify_jwt = false
+
+[functions.anonymize-job]
+verify_jwt = false
+
+[functions.publication-analytics-track]
+verify_jwt = false
+
+[functions.publication-api]
+verify_jwt = false
+
+[functions.submit-application]
+verify_jwt = false
+
+[functions.generate-blog-post]
+verify_jwt = false
+
+[functions.blog-api]
+verify_jwt = false
+
+[functions.external-job-search]
+verify_jwt = false
+
+[functions.market-radar-scan]
+verify_jwt = false
+
+[functions.restructure-job-content]
+verify_jwt = false
+
+[functions.enrich-client]
+verify_jwt = false
+
+[functions.generate-embedding]
+verify_jwt = false
+
+[functions.batch-generate-embeddings]
+verify_jwt = false
+
+[functions.batch-geocode]
+verify_jwt = false
+
+[functions.cleanup-hallucinated-jobs]
+verify_jwt = false
+
+[functions.process-job-info]
+verify_jwt = false
+
+[functions.invite-applicant]
+verify_jwt = false
+
+[functions.expire-publications]
+verify_jwt = false
+
+[functions.extract-benefits-from-files]
+verify_jwt = false

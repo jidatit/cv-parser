@@ -1,0 +1,1 @@
+UPDATE clients SET logo_bg_color = NULL WHERE id = '49a2ba1a-f8a7-4cf3-89fc-915a7aeddb24';

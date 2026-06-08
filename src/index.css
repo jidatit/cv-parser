@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@tailwind base;
+
+/* Kallisto – local fonts in public/fonts/ */
+@font-face {
+  font-family: "Kallisto";
+  src: url("/fonts/fonnts.com-Kallisto_Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Kallisto";
+  src: url("/fonts/fonnts.com-Kallisto_Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Kallisto";
+  src: url("/fonts/fonnts.com-Kallisto_Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Kallisto";
+  src: url("/fonts/fonnts.com-Kallisto_Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Kallisto";
+  src: url("/fonts/fonnts.com-Kallisto_Heavy.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 10% 98%;
+    --foreground: 240 10% 9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 9%;
+
+    --primary: 215 85% 25%;
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 215 85% 35%;
+
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 215 85% 92%;
+    --accent-foreground: 215 85% 25%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+    --success-light: 142 76% 95%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+    --warning-light: 38 92% 95%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 215 85% 25%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 5.9% 10%;
+    --foreground: 240 4.8% 95.9%;
+
+    --card: 240 3.7% 15.9%;
+    --card-foreground: 240 4.8% 95.9%;
+
+    --popover: 240 3.7% 15.9%;
+    --popover-foreground: 240 4.8% 95.9%;
+
+    --primary: 215 85% 45%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 3.7% 20%;
+    --secondary-foreground: 240 4.8% 95.9%;
+
+    --muted: 240 3.7% 18%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 20%;
+    --accent-foreground: 240 4.8% 95.9%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 20%;
+    --input: 240 3.7% 18%;
+    --ring: 215 85% 45%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 215 85% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 215 85% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Prevent browser back/forward navigation on horizontal scroll */
+  .overflow-x-auto,
+  .overflow-x-scroll,
+  .overflow-auto {
+    overscroll-behavior-x: contain;
+  }
+}
+
+/* Hide scrollbar while keeping scroll (e.g. Job Exposé Creator preview) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Pipeline-specific scroll container - comprehensive overscroll prevention */
+.pipeline-list-scroll {
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: auto;
+}
+
+/* Force light mode for CV preview - ensures print-ready appearance */
+.cv-light-mode,
+.cv-light-mode * {
+  color-scheme: light;
+  --background: 0 0% 100%;
+  --foreground: 240 10% 9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 9%;
+  --primary: 215 85% 25%;
+  --primary-foreground: 0 0% 98%;
+  --primary-light: 215 85% 35%;
+  --secondary: 240 5% 96%;
+  --secondary-foreground: 240 6% 10%;
+  --muted: 240 5% 96%;
+  --muted-foreground: 240 4% 46%;
+  --accent: 215 85% 92%;
+  --accent-foreground: 215 85% 25%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 6% 90%;
+  --input: 240 6% 90%;
+  --ring: 215 85% 25%;
+}
+
+.cv-light-mode {
+  background-color: transparent;
+}
+
+.cv-light-mode .bg-white {
+  background-color: white !important;
+}
+
+/* Force all text to black except primary-colored headings */
+.cv-light-mode p,
+.cv-light-mode span,
+.cv-light-mode li,
+.cv-light-mode div:not(:has(*)) {
+  color: hsl(240 10% 9%) !important;
+}
+
+.cv-light-mode .text-muted-foreground {
+  color: hsl(240 4% 35%) !important;
+}
+
+/* Keep headings blue */
+.cv-light-mode h1,
+.cv-light-mode h2,
+.cv-light-mode h3,
+.cv-light-mode h4,
+.cv-light-mode .text-primary {
+  color: hsl(215 85% 25%) !important;
+}

@@ -1,0 +1,1 @@
+ALTER TABLE public.market_radar_profiles ALTER COLUMN pensum_min SET DEFAULT 80;

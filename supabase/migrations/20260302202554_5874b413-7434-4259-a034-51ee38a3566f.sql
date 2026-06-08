@@ -1,0 +1,1 @@
+UPDATE jobs SET source_url_status = NULL, source_url_reason = NULL WHERE source_url_status = 'dead' AND source_url IS NOT NULL;

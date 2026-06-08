@@ -1,0 +1,1 @@
+ALTER TABLE candidates ADD COLUMN full_image_url text;
