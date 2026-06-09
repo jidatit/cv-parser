@@ -21,6 +21,14 @@ interface LocationAutocompleteProps {
   id?: string;
 }
 
+const createSessionToken = () => {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+
+  return `demo-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+};
+
 export function LocationAutocomplete({
   value,
   onChange,
@@ -34,7 +42,7 @@ export function LocationAutocomplete({
   const [inputValue, setInputValue] = useState(value);
   const [isEditing, setIsEditing] = useState(false);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const sessionTokenRef = useRef<string>(crypto.randomUUID());
+  const sessionTokenRef = useRef<string>(createSessionToken());
   const popoverRef = useRef<HTMLDivElement>(null);
 
   // Sync external value changes - only when not actively editing
@@ -100,7 +108,7 @@ export function LocationAutocomplete({
     setOpen(false);
     setIsEditing(false);
     // Generate new session token after selection (Google best practice)
-    sessionTokenRef.current = crypto.randomUUID();
+    sessionTokenRef.current = createSessionToken();
   }, [onChange]);
 
   const handleFocus = useCallback(() => {

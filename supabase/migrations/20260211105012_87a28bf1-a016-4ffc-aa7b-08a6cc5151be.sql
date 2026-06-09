@@ -1,1 +1,0 @@
-ALTER TABLE public.jobs ADD COLUMN source_document_url text;

@@ -1,1 +1,0 @@
-ALTER TABLE public.candidates ADD COLUMN is_verified boolean NOT NULL DEFAULT false;

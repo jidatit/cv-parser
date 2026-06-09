@@ -1,1 +1,0 @@
-DROP FUNCTION IF EXISTS public.match_candidates_by_embedding(vector, integer, double precision);

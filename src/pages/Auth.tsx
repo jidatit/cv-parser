@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { DEMO_USERS, type DemoUser } from "@/integrations/supabase/demoData";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2 } from "lucide-react";
+import { Loader2, ShieldCheck } from "lucide-react";
 import { z } from "zod";
 import { useTranslation } from "react-i18next";
+
+const ROLE_META: Record<string, { label: string; icon: typeof ShieldCheck; description: string }> = {
+  admin: { label: "Admin", icon: ShieldCheck, description: "Full access · manage users" },
+};
+
+const ADMIN_DEMO_USERS = DEMO_USERS.filter((demoUser) => demoUser.role === "admin");
 
 export default function Auth() {
   const navigate = useNavigate();
@@ -193,6 +201,27 @@ export default function Auth() {
     }
   };
 
+  const handleRoleLogin = async (demoUser: DemoUser) => {
+    setLoading(true);
+    setEmail(demoUser.email);
+    setPassword(demoUser.password);
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: demoUser.email,
+        password: demoUser.password,
+      });
+      if (error) throw error;
+      // Redirect is handled by the onAuthStateChange listener.
+    } catch (error: any) {
+      toast({
+        title: t("auth.loginError"),
+        description: error.message || t("auth.genericError"),
+        variant: "destructive",
+      });
+      setLoading(false);
+    }
+  };
+
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -358,6 +387,46 @@ export default function Auth() {
         <CardContent>
           {!showForgotPassword ? (
             <form onSubmit={handleSignIn} className="space-y-4">
+              <div className="space-y-2">
+                <p className="text-sm font-medium text-center">
+                  Demo login
+                </p>
+                <div className="grid gap-2">
+                  {ADMIN_DEMO_USERS.map((demoUser) => {
+                    const meta = ROLE_META[demoUser.role];
+                    const Icon = meta?.icon ?? ShieldCheck;
+                    return (
+                      <Button
+                        key={demoUser.id}
+                        type="button"
+                        variant="outline"
+                        className="h-auto flex-col items-start gap-0.5 py-3 px-4 text-left"
+                        onClick={() => handleRoleLogin(demoUser)}
+                        disabled={loading}
+                      >
+                        <span className="flex items-center gap-1.5 font-semibold">
+                          <Icon className="h-3.5 w-3.5" />
+                          {meta?.label ?? demoUser.role}
+                        </span>
+                        <span className="text-[10px] font-normal text-muted-foreground leading-tight">
+                          {meta?.description}
+                        </span>
+                      </Button>
+                    );
+                  })}
+                </div>
+                <p className="text-[10px] text-muted-foreground text-center">
+                  Demo data is stored locally in your browser. No backend required.
+                </p>
+              </div>
+
+              <div className="relative">
+                <Separator />
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-card px-2 text-xs text-muted-foreground">
+                  or sign in manually
+                </span>
+              </div>
+
               <div className="space-y-2">
                 <Label htmlFor="signin-email">{t("auth.email")}</Label>
                 <Input

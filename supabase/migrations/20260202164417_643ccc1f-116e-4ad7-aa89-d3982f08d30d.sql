@@ -1,1 +1,0 @@
-UPDATE clients SET industry = NULL WHERE id = 'f3a5cf46-e278-442b-a22d-d361d629343f'

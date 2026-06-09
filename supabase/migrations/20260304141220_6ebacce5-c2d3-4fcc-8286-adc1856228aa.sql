@@ -1,1 +1,0 @@
-UPDATE jobs SET status = 'Nicht offen' WHERE status = 'No Demand';

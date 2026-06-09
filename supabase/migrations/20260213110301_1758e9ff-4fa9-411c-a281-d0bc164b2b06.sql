@@ -1,1 +1,0 @@
-ALTER TABLE public.jobs ADD COLUMN structured_notes jsonb DEFAULT '[]'::jsonb;

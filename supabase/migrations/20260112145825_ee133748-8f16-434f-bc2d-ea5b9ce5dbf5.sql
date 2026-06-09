@@ -1,1 +1,0 @@
-DELETE FROM public.industries WHERE name != 'Bauwesen';
